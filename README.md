@@ -27,15 +27,20 @@
 
 ## Event Storming 결과
 * MSAEz 로 모델링한 이벤트스토밍 결과:  
-![image](https://user-images.githubusercontent.com/100417759/203231304-be3105fe-d1f3-4b8c-aca9-b2b105512b01.png)
+![image](https://user-images.githubusercontent.com/100417759/203254344-8771c9e3-6bfb-4f7a-bc6d-9819a902d568.png)
+
 
 
 
 ### 비기능 요구사항에 대한 검증
 - Saga(pub/sub)
+order, food에 대한 state, pay, delivery 소스 코드 수정
 
 
 - CQRS
+order에realmodel 적용(create, update, delete)
+![image](https://user-images.githubusercontent.com/100417759/203252792-24ef4d47-1a8d-4698-a65c-fa41864e64db.png)
+
 
 
 - Compensation / Correlation
@@ -43,15 +48,18 @@
 ![image](https://user-images.githubusercontent.com/100417759/203234366-e090257d-eb73-476d-99c6-fd51c6267424.png)
 
 - Request / Response
-
+order-> pay후 manager check
+![image](https://user-images.githubusercontent.com/100417759/203256180-b66f08a6-f841-4809-b7b9-fc9f1a43d6b8.png)
 
 - Circuit breaker
 => pay의 리소스의 application.yml에서 임계치 바꾸고 payment.java의 소스코드 수정해서 delay 발생 유도
 ![image](https://user-images.githubusercontent.com/100417759/203233269-0004a085-955b-4fb0-949e-e77114693fc2.png)
 ![image](https://user-images.githubusercontent.com/100417759/203233325-bb6968b3-2f9e-4fab-a058-866bdf74b511.png)
-
+=> 확인
+![image](https://user-images.githubusercontent.com/100417759/203255017-fdd435a4-117d-4a04-8a68-6160757c631d.png)
 
 - Gateway
-gateway에 각 api 엔드포인트 설정
-![image](https://user-images.githubusercontent.com/100417759/203235435-2c737b2d-3794-4478-8125-3a354588234a.png)
+gateway에 각 api 엔드포인트 설정(customer, front, rider, store)
+![image](https://user-images.githubusercontent.com/100417759/203249962-075435fd-62ac-4847-bd6c-4495fb76dc8b.png)
+
 
