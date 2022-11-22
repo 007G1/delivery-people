@@ -39,12 +39,19 @@
 
 
 - Compensation / Correlation
-
+상점관리 수행되지 않을 때 주문 받을 수 있도록 store.java의 소스코드 수정
+![image](https://user-images.githubusercontent.com/100417759/203234366-e090257d-eb73-476d-99c6-fd51c6267424.png)
 
 - Request / Response
 
 
 - Circuit breaker
+=> pay의 리소스의 application.yml에서 임계치 바꾸고 payment.java의 소스코드 수정해서 delay 발생 유도
+![image](https://user-images.githubusercontent.com/100417759/203233269-0004a085-955b-4fb0-949e-e77114693fc2.png)
+![image](https://user-images.githubusercontent.com/100417759/203233325-bb6968b3-2f9e-4fab-a058-866bdf74b511.png)
 
 
 - Gateway
+gateway에 각 api 엔드포인트 설정
+![image](https://user-images.githubusercontent.com/100417759/203235435-2c737b2d-3794-4478-8125-3a354588234a.png)
+
