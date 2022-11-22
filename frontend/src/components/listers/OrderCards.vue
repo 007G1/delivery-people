@@ -71,7 +71,7 @@
                 'productId': '',
                 'customerId': '',
                 'amount': 0,
-                'qty': 0,
+                'state': '',
             }
         },
         methods:{

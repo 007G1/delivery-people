@@ -3,22 +3,182 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: monolith
+  name: order
   labels:
-    app: monolith
+    app: order
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: monolith
+      app: order
   template:
     metadata:
       labels:
-        app: monolith
+        app: order
     spec:
       containers:
-        - name: monolith
-          image: username/monolith:latest
+        - name: order
+          image: username/order:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pay
+  labels:
+    app: pay
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pay
+  template:
+    metadata:
+      labels:
+        app: pay
+    spec:
+      containers:
+        - name: pay
+          image: username/pay:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: store
+  labels:
+    app: store
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: store
+  template:
+    metadata:
+      labels:
+        app: store
+    spec:
+      containers:
+        - name: store
+          image: username/store:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: delivery
+  labels:
+    app: delivery
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: delivery
+  template:
+    metadata:
+      labels:
+        app: delivery
+    spec:
+      containers:
+        - name: delivery
+          image: username/delivery:latest
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 10
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 10
+          livenessProbe:
+            httpGet:
+              path: '/actuator/health'
+              port: 8080
+            initialDelaySeconds: 120
+            timeoutSeconds: 2
+            periodSeconds: 5
+            failureThreshold: 5
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: alarm
+  labels:
+    app: alarm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: alarm
+  template:
+    metadata:
+      labels:
+        app: alarm
+    spec:
+      containers:
+        - name: alarm
+          image: username/alarm:latest
           ports:
             - containerPort: 8080
           readinessProbe:
@@ -45,13 +205,81 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: monolith
+  name: order
   labels:
-    app: monolith
+    app: order
 spec:
   ports:
     - port: 8080
       targetPort: 8080
   selector:
-    app: monolith
+    app: order
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: pay
+  labels:
+    app: pay
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: pay
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: store
+  labels:
+    app: store
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: store
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: delivery
+  labels:
+    app: delivery
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: delivery
+
+
+---
+
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: alarm
+  labels:
+    app: alarm
+spec:
+  ports:
+    - port: 8080
+      targetPort: 8080
+  selector:
+    app: alarm
 

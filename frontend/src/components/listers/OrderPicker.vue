@@ -24,7 +24,7 @@
                                 Amount :  {{item.amount }}
                             </v-list-item-subtitle>
                             <v-list-item-subtitle>
-                                Qty :  {{item.qty }}
+                                State :  {{item.state }}
                             </v-list-item-subtitle>
                         </v-list-item-content>
 

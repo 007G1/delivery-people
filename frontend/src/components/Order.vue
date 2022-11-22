@@ -20,7 +20,7 @@
             <String label="ProductId" v-model="value.productId" :editMode="editMode"/>
             <String label="CustomerId" v-model="value.customerId" :editMode="editMode"/>
             <Number label="Amount" v-model="value.amount" :editMode="editMode"/>
-            <Number label="Qty" v-model="value.qty" :editMode="editMode"/>
+            <String label="State" v-model="value.state" :editMode="editMode"/>
         </v-card-text>
 
         <v-card-actions>
