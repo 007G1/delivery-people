@@ -27,7 +27,8 @@
 
 ## Event Storming 결과
 * MSAEz 로 모델링한 이벤트스토밍 결과:  
-![image](https://user-images.githubusercontent.com/100417759/203226518-9696beb3-ca14-4d58-ba29-89b44adaa156.png)
+![image](https://user-images.githubusercontent.com/100417759/203231304-be3105fe-d1f3-4b8c-aca9-b2b105512b01.png)
+
 
 
 ### 비기능 요구사항에 대한 검증
